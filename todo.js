@@ -20,3 +20,7 @@ displayDate.innerHTML = month[date.getMonth()] + ' ' + date.getDate() + ', ' +da
 
 //here too, numberOfTasks is created so that i can 
 const numberOfTasks = document.querySelector('.task-number');
+
+let countTask = 1;
+
+numberOfTasks.innerHTML = countTask + (countTask === 1 ? " task" : " tasks");
