@@ -43,51 +43,66 @@ displayDate.innerHTML =
 //here too, numberOfTasks is created so that i can
 const numberOfTasks = document.querySelector(".task-number");
 
-//ticks creates an array like structure which stores all same class tags in one place
-
-const ticks = document.querySelectorAll('.task-check');
-
-// here foreach makes sure that each tag gets this unnamed function and when clicked on the button it turns green and there is strike though over the text and vice-versa
-ticks.forEach(tick => {
-    tick.addEventListener('click' , () => {
-        if(tick.style.backgroundColor !== "green"){
-            tick.style.backgroundColor = "green";
-            const taskBody = tick.parentElement;
-            const taskName = taskBody.querySelector('.task-name');
-            taskName.style.textDecoration = "line-through";
-        }
-        else{
-            tick.style.backgroundColor = "white";
-            const taskBody = tick.parentElement;
-            const taskName = taskBody.querySelector('.task-name');
-            taskName.style.textDecoration = "none";
-        }
-    });
-});
-
 // this part of code says how many tasks are listed
 
-countTask = 0;
-ticks.forEach(tick => {
-    countTask++;
-});
+let countTask = 2
 
 numberOfTasks.innerHTML = countTask + (countTask === 1 ? " task" : " tasks");
 
 // this part of code enables the add task option.
 
-const addTaskDialogBox = document.querySelector('.add-task');
+const addTaskDialogBox = document.querySelector(".add-task");
 
-const addTaskButton = document.querySelector('.add-button');
+const addTaskButton = document.querySelector(".add-button");
 
-addTaskButton.addEventListener('click', () => {
-  if(addTaskDialogBox.style.display === "none"){
-    addTaskButton.classList.toggle('rotate-45');
-    addTaskDialogBox.classList.toggle('display-add-task');
-  }
-  else{
-    addTaskDialogBox.classList.toggle('display-add-task')
-    addTaskButton.classList.toggle('rotate-45');
+addTaskButton.addEventListener("click", () => {
+  console.log("clicked");
+  if (addTaskDialogBox.style.display === "none") {
+    addTaskButton.classList.toggle("rotate-45");
+    addTaskDialogBox.classList.toggle("display-add-task");
+  } else {
+    addTaskDialogBox.classList.toggle("display-add-task");
+    addTaskButton.classList.toggle("rotate-45");
   }
 });
 
+// this part lets the user add the task in the todo list
+const save = document.querySelector(".save-task");
+const taskItem = document.querySelector(".addName");
+const taskListContainer = document.querySelector(".tasks-body");
+
+save.addEventListener("click", () => {
+  const taskName = taskItem.value.trim();
+  taskItem.value = "";
+
+  console.log(taskItem);
+
+  const newTask = document.createElement("div");
+  newTask.classList.add("task");
+
+  const newPara = document.createElement("p");
+  newPara.classList.add("task-name");
+  newPara.textContent = taskName;
+
+  const newButton = document.createElement("button");
+  newButton.classList.add("task-check");
+
+  newButton.addEventListener('click', () => {
+    if(newButton.style.backgroundColor !== "green")
+    {
+      newButton.style.backgroundColor = "green";
+      newPara.style.textDecoration = "line-through";
+    }
+    else{
+      newButton.style.backgroundColor = "white";
+      newPara.style.textDecoration = "none";
+    }
+  });  
+
+  newTask.appendChild(newPara);
+  newTask.appendChild(newButton);
+
+  taskListContainer.appendChild(newTask);
+
+  console.log(taskName);
+});
