@@ -1,72 +1,117 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
-body{
+body {
     margin: 0;
     padding: 0;
-    background-color: rgb(34, 3, 58);
-}
-
-.pseudo-body
-{
-    margin: 0;
-    padding: 0;
-    
-    display: flex;
-    justify-content: center;
-    
-}
-
-.body
-{
+    background-image: url('./whiteflowerbg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    background-color: red;
+}
+
+.pseudo-body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(57, 9, 87);
     margin-top: 10vh;
-    height: 500px;
-    width: 450px;
+    height: 700px;
+    width: 600px;
     border: 2px solid black;
     border-radius: 10px;
 }
 
-.gen-info
-{
+.gen-info {
     display: flex;
     flex-direction: row;
-    background-color: antiquewhite;
+    background-color: #faebd7;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.date-time{
+.date-time {
     flex: 1;
 }
 
-.day
-{
+.day {
     font-family: Rajdhani;
     font-size: 40px;
-    font-weight:500;
+    font-weight: 500;
     padding-left: 20px;
     padding-top: 20px;
 }
 
-.date
-{
+.date {
     font-family: Rajdhani;
     font-size: 20px;
-    font-weight:600;
+    font-weight: 600;
     padding-left: 20px;
     padding-bottom: 20px;
     color: rgb(66, 15, 113);
 }
 
-.task-number
-{
+.task-number {
     flex: 1;
     font-family: Rajdhani;
     font-size: 35px;
-    font-weight:600;
+    font-weight: 600;
     margin: auto;
     text-align: end;
     padding-right: 60px;
+}
+
+.tasks-body {
+    display: flex;
+    flex-direction: column;
+    font-family: Rajdhani;
+    font-size: 25px;
+    font-weight: 600;
+    color: #ffebcd;
+}
+
+.task {
+    display:flex;
+    /* background-color: aqua; */
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task button{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+
+.add {
+    margin: auto;
+    position: fixed;
+    top: 780px;
+}
+
+.add button {
+    background-image: url('./plus.png');
+    background-position: center;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    width: 95px;
+    height: 50px;
+    padding: 30px;
+    border-radius: 50px;
+    transition: background-color 0.1s;
+}
+
+.add button:hover {
+    background-color: bisque;
 }
