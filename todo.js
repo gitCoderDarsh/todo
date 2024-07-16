@@ -73,3 +73,21 @@ ticks.forEach(tick => {
 });
 
 numberOfTasks.innerHTML = countTask + (countTask === 1 ? " task" : " tasks");
+
+// this part of code enables the add task option.
+
+const addTaskDialogBox = document.querySelector('.add-task');
+
+const addTaskButton = document.querySelector('.add-button');
+
+addTaskButton.addEventListener('click', () => {
+  if(addTaskDialogBox.style.display === "none"){
+    addTaskButton.classList.toggle('rotate-45');
+    addTaskDialogBox.classList.toggle('display-add-task');
+  }
+  else{
+    addTaskDialogBox.classList.toggle('display-add-task')
+    addTaskButton.classList.toggle('rotate-45');
+  }
+});
+
