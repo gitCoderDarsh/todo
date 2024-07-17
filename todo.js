@@ -45,7 +45,7 @@ const numberOfTasks = document.querySelector(".task-number");
 
 // this part of code says how many tasks are listed
 
-let countTask = 2
+let countTask = 2;
 
 numberOfTasks.innerHTML = countTask + (countTask === 1 ? " task" : " tasks");
 
@@ -73,36 +73,48 @@ const taskListContainer = document.querySelector(".tasks-body");
 
 save.addEventListener("click", () => {
   const taskName = taskItem.value.trim();
-  taskItem.value = "";
 
   console.log(taskItem);
 
-  const newTask = document.createElement("div");
-  newTask.classList.add("task");
+  if (taskName === "") {
+    console.log("dont print")
+  }else{
+    const newTask = document.createElement("div");
+    newTask.classList.add("task");
 
-  const newPara = document.createElement("p");
-  newPara.classList.add("task-name");
-  newPara.textContent = taskName;
+    const newPara = document.createElement("p");
+    newPara.classList.add("task-name");
+    newPara.textContent = taskName;
 
-  const newButton = document.createElement("button");
-  newButton.classList.add("task-check");
+    const newButton = document.createElement("button");
+    newButton.classList.add("task-check");
 
-  newButton.addEventListener('click', () => {
-    if(newButton.style.backgroundColor !== "green")
-    {
-      newButton.style.backgroundColor = "green";
-      newPara.style.textDecoration = "line-through";
-    }
-    else{
-      newButton.style.backgroundColor = "white";
-      newPara.style.textDecoration = "none";
-    }
-  });  
+    const deleteTask = document.createElement("button");
 
-  newTask.appendChild(newPara);
-  newTask.appendChild(newButton);
+    deleteTask.classList.add("delete");
 
-  taskListContainer.appendChild(newTask);
+    newButton.addEventListener("click", () => {
+      if (newButton.style.backgroundColor !== "green") {
+        newButton.style.backgroundColor = "green";
+        newPara.style.textDecoration = "line-through";
+      } else {
+        newButton.style.backgroundColor = "white";
+        newPara.style.textDecoration = "none";
+      }
+    });
 
-  console.log(taskName);
+    deleteTask.addEventListener("click", () => {
+      taskListContainer.removeChild(newTask);
+    });
+
+    newTask.appendChild(newPara);
+    newTask.appendChild(newButton);
+    newTask.appendChild(deleteTask);
+
+    taskListContainer.appendChild(newTask);
+
+    console.log(taskName);
+    taskItem.value = "";
+  }
+
 });
