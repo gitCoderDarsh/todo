@@ -43,12 +43,6 @@ displayDate.innerHTML =
 //here too, numberOfTasks is created so that i can
 const numberOfTasks = document.querySelector(".task-number");
 
-// this part of code says how many tasks are listed
-
-let countTask = 2;
-
-numberOfTasks.innerHTML = countTask + (countTask === 1 ? " task" : " tasks");
-
 // this part of code enables the add task option.
 
 const addTaskDialogBox = document.querySelector(".add-task");
@@ -105,6 +99,7 @@ save.addEventListener("click", () => {
 
     deleteTask.addEventListener("click", () => {
       taskListContainer.removeChild(newTask);
+      countTask();
     });
 
     newTask.appendChild(newPara);
@@ -115,6 +110,16 @@ save.addEventListener("click", () => {
 
     console.log(taskName);
     taskItem.value = "";
+    countTask();
   }
 
 });
+
+// this part of code says how many tasks are listed
+
+function countTask(){
+  
+  const countTask = taskListContainer.children.length;
+  numberOfTasks.innerHTML = countTask + (countTask === 1 ? " task" : " tasks");
+
+}
